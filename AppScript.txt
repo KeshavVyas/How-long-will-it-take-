@@ -1,0 +1,80 @@
+function myFunction() {
+var cheet = SpreadsheetApp.getActiveSpreadsheet(); // for the actual spread sheet
+var cs = cheet.getSheets()[1]; // for the actual spread sheet
+ 
+var formInput =  cheet.getSheets()[0];
+var lr = formInput.getLastRow();
+ 
+ 
+var alphabet = ("HABCDEFGHIJKLMNOPQRSTUVWXYZ");
+var assignmentnum = formInput.getRange("D"+lr+":"+"D"+lr).getValues();  // GOOGLE FORM// GOOGLE FORM// GOOGLE FORM// GOOGLE FORM
+ 
+ 
+assignmentnum = assignmentnum * 1;
+assignmentnum = alphabet.charAt(assignmentnum);
+ 
+var course_ID = String(formInput.getRange("C"+lr+':'+'C'+lr).getValues()); // GOOGLE FORM// GOOGLE FORM// GOOGLE FORM// GOOGLE FORM
+ 
+ 
+ 
+ 
+ 
+//var course_ID = 16;// GOOGLE FORM// GOOGLE FORM// GOOGLE FORM// GOOGLE FORM
+ 
+var timen = String(cs.getRange(assignmentnum+course_ID+':'+assignmentnum+course_ID).getValues());
+var wherecomma = timen.indexOf(',');
+ 
+var time = timen.slice(0,wherecomma);
+var n = timen.slice((wherecomma+1));
+var newTiming;
+// calc new timine and n = n + 1
+newTiming = String(formInput.getRange("B"+lr+':'+'B'+lr).getValues());; // GOOGLE FORM // GOOGLE FORM// GOOGLE FORM//GOOGLE FORM// GOOGLE FORM
+newTiming = newTiming * 1;
+ 
+ 
+ 
+// taking new time
+time = time * 1;
+n = n* 1;
+n = n + 1;
+ 
+time = time*(n-1);
+time = time + newTiming ;
+time = time / n;
+// time
+Logger.log("\n\n TEST " + timen);
+ Logger.log("The new average time to complete this is assignment is " + time);
+// Logger.log("The number of people that have added to this is " + course_ID);
+//output
+    var cell = cs.getRange(assignmentnum+course_ID);
+time = String(time);
+n = String(n);
+timen = String(time + ","+n);
+Logger.log("What is timen " + timen);
+    cell.setValue(timen);
+//reset
+ 
+ 
+//val = val * 15;
+ 
+ 
+ 
+ 
+ 
+ // Email
+ 
+//var recipient = "anonymousbob857@gmail.com";
+//var subject = 'Logger Output 1';
+//var body = Logger.getLog();
+//MailApp.sendEmail(recipient, subject, body);
+ 
+ 
+ 
+ 
+// Sorts by the values in the first column (A)
+//Hello
+ 
+ }
+ 
+
+
